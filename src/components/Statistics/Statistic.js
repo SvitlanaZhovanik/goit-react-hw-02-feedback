@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { List, Item, Number } from './Statistic.styled';
 import { FcHighPriority, FcApproval } from 'react-icons/fc';
 const Statistic = ({ good, neutral, bad, total, percentage }) => {
@@ -28,5 +29,12 @@ const Statistic = ({ good, neutral, bad, total, percentage }) => {
       )}
     </List>
   );
+};
+Statistic.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  percentage: PropTypes.number,
 };
 export default Statistic;

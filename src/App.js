@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FcCancel } from 'react-icons/fc';
+import Notification from './components/Notification/Notification';
 import Section from './components/Section/Section';
 import FeedbackOption from './components/FeedbackOptions/FeedbackOptions';
 import Statistic from './components/Statistics/Statistic';
@@ -37,10 +37,7 @@ class App extends Component {
               percentage={positiveFeedbackPercentage}
             />
           ) : (
-            <h3>
-              <FcCancel />
-              No feedback given
-            </h3>
+            <Notification message="There is no feedback" />
           )}
         </Section>
       </div>
