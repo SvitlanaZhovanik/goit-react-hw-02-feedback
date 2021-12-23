@@ -1,4 +1,5 @@
 import { List, Item, Number } from './Statistic.styled';
+import { FcHighPriority, FcApproval } from 'react-icons/fc';
 const Statistic = ({ good, neutral, bad, total, percentage }) => {
   return (
     <List>
@@ -14,9 +15,17 @@ const Statistic = ({ good, neutral, bad, total, percentage }) => {
       <Item>
         Total:<Number>{total}</Number>
       </Item>
-      {/* <Item>
-        Positive feedback:<Number>{percentage}</Number>
-      </Item> */}
+      {percentage > 49 ? (
+        <Item>
+          Positive feedback: <FcApproval />
+          <Number>{percentage}</Number>%
+        </Item>
+      ) : (
+        <Item>
+          Positive feedback: <FcHighPriority />
+          <Number>{percentage}</Number>%
+        </Item>
+      )}
     </List>
   );
 };

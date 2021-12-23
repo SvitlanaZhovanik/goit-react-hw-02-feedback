@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { FcCancel } from 'react-icons/fc';
 import Section from './components/Section/Section';
 import FeedbackOption from './components/FeedbackOptions/FeedbackOptions';
 import Statistic from './components/Statistics/Statistic';
+
 class App extends Component {
   state = {
     good: 0,
@@ -12,12 +14,10 @@ class App extends Component {
     this.setState(state => ({ [key]: state[key] + 1 }));
   };
   countTotalFeedback = () => {
-    const total = this.state.good + this.state.neutral + this.state.bad;
-    return total;
+    return this.state.good + this.state.neutral + this.state.bad;
   };
   countPositiveFeedbackPercentage = value => {
-    const percentageGood = (this.state.good / value) * 100;
-    return percentageGood;
+    return Math.round((this.state.good / value) * 100);
   };
   render() {
     const total = this.countTotalFeedback();
@@ -28,13 +28,20 @@ class App extends Component {
           <FeedbackOption onLeaveFeedback={this.onLeaveFeedback} />
         </Section>
         <Section title="Statistic">
-          <Statistic
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
-            total={total}
-            percentage={positiveFeedbackPercentage}
-          />
+          {total ? (
+            <Statistic
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+              total={total}
+              percentage={positiveFeedbackPercentage}
+            />
+          ) : (
+            <h3>
+              <FcCancel />
+              No feedback given
+            </h3>
+          )}
         </Section>
       </div>
     );
