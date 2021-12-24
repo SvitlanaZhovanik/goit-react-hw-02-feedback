@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 const FeedbackOption = ({ options, onLeaveFeedback }) => {
   return (
     <List>
-      {' '}
       {options.map(option => {
         return (
           <Item key={option}>
@@ -17,7 +16,7 @@ const FeedbackOption = ({ options, onLeaveFeedback }) => {
             </Button>
           </Item>
         );
-      })}{' '}
+      })}
     </List>
   );
 };
