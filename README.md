@@ -1,1 +1,2 @@
-# goit-react-hw-02-feedback
+# goit-react-hw-02-feedback 
+Реализован фкнкционал подсчета отзывов. В работе использованы библиотеки emotion а также React Icons. Были изучены классы - компоненты React. 
