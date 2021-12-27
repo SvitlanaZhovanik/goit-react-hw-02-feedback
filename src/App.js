@@ -14,7 +14,8 @@ class App extends Component {
     this.setState(state => ({ [key]: state[key] + 1 }));
   };
   countTotalFeedback = () => {
-    return this.state.good + this.state.neutral + this.state.bad;
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
   };
   countPositiveFeedbackPercentage = value => {
     return Math.round((this.state.good / value) * 100);
@@ -22,6 +23,7 @@ class App extends Component {
   render() {
     const total = this.countTotalFeedback();
     const positiveFeedbackPercentage = this.countPositiveFeedbackPercentage(total);
+    const { good, neutral, bad } = this.state;
     return (
       <div>
         <Section title="Please leave feedback">
@@ -33,9 +35,9 @@ class App extends Component {
         <Section title="Statistic">
           {total ? (
             <Statistic
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
+              good={good}
+              neutral={neutral}
+              bad={bad}
               total={total}
               percentage={positiveFeedbackPercentage}
             />
