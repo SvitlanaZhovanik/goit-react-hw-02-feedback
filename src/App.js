@@ -10,9 +10,11 @@ class App extends Component {
     neutral: 0,
     bad: 0,
   };
-  onLeaveFeedback = key => {
+  handlerLeaveFeedback = value => {
+    const key = value.target.textContent;
     this.setState(state => ({ [key]: state[key] + 1 }));
   };
+
   countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
     return good + neutral + bad;
@@ -27,10 +29,7 @@ class App extends Component {
     return (
       <div>
         <Section title="Please leave feedback">
-          <FeedbackOption
-            options={Object.keys(this.state)}
-            onLeaveFeedback={this.onLeaveFeedback}
-          />
+          <FeedbackOption options={Object.keys(this.state)} onClick={this.handlerLeaveFeedback} />
         </Section>
         <Section title="Statistic">
           {total ? (
